@@ -11,9 +11,39 @@ class Post(models.Model):
     published_date = models.DateTimeField(
             blank=True, null=True)
 
+
     def publish(self):
         self.published_date = timezone.now()
         self.save()
 
     def __str__(self):
         return self.title
+
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=50)
+
+    created_date = models.DateTimeField(
+            default=timezone.now)
+    published_date = models.DateTimeField(
+            blank=True, null=True)
+
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()
+
+
+class PostCategory(models.Model):
+    post_id = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    category_id = models.ForeignKey('Category', on_delete=models.CASCADE)
+
+
+    created_date = models.DateTimeField(
+            default=timezone.now)
+    published_date = models.DateTimeField(
+            blank=True, null=True)
+
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()

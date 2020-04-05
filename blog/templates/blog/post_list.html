@@ -1,22 +1,129 @@
-<html>
-    <head>
-        <title>Django Girls blog</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="/">Django Girls Blog</a></h1>
+{% extends 'blog/base.html' %}
+{% block content %}
+<!-- Main listing -->
+<div class="col-lg-8 col-12 mx-lg-4">
+
+    <!-- Section: Classic blog listing -->
+    <section class="classic-blog-listing">
+
+        {% for post in posts %}
+
+        <!-- Grid row -->
+        <div class="row mb-5">
+
+            <!-- Grid column -->
+            <div class="col-md-12">
+
+                <!-- Image -->
+                <div class="view overlay z-depth-1 mb-3">
+                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/8-col/img%20%28122%29.jpg"
+                         class="img-fluid">
+                    <a href="#!">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+
+                <!-- Excerpt -->
+                <a>
+                    <p class="text-center font-weight-bold gold-text mt-4">NATURE</p>
+                </a>
+
+                <h2 class="text-center font-weight-bold dark-grey-text pb-3">
+                    <strong>{{post.title}}</strong>
+                </h2>
+
+                <p class="dark-grey-text">
+                    {{post.text}}
+                </p>
+
+                <div class="text-center pb-2">
+                    <a class="btn btn-transparent btn-sm font-weight-bold btn-rounded dark-grey-text">Read
+                        more</a>
+                </div>
+
+
+                <!-- Post data -->
+                <div class="post-data mt-3 pt-3 grey-text">
+                    <h6>By
+                        <a href="#!" class="gold-text">{{post.author}}</a> on 25/08/2016
+                        <a href="#!" class="dark-grey-text">
+                            <i class="far fa-comments pr-2 pl-3"></i>149</a>
+                    </h6>
+
+                    <ul class="list-unstyled list-inline circle-icons">
+                        <!-- Facebook -->
+                        <li class="list-inline-item mr-0">
+                            <a class="fb-ic">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <!-- Twitter -->
+                        <li class="list-inline-item mr-0">
+                            <a class="tw-ic">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <!-- Google + -->
+                        <li class="list-inline-item mr-0">
+                            <a class="gplus-ic">
+                                <i class="fab fa-google-plus-g"></i>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+            <!-- Grid column -->
+
         </div>
-        <div>
-            <p>published: 14.06.2014, 12:14</p>
-            <h2><a href="">İlk Blogum</a></h2>
-            <p>Çok heyecanlıyım! Bu benim ilk blogum. Ne kadar zevkli bir işmiş bilgisayarlarla uğraşmak. Artık bilgisayar başından kalkmam. </p>
-        </div>
+        <!-- Grid row -->
 
+         {% endfor %}
 
+    </section>
+    <!-- Section: Classic blog listing -->
 
-    {% for post in posts %}
-    {{post.title|linebreaksbr}}
-    {% endfor %}
+    <!-- Pagination dark grey -->
+    <nav class="mb-5 pb-2">
+        <ul class="pagination pg-dark flex-center">
+            <!-- Arrow left -->
+            <li class="page-item">
+                <a class="page-link" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                </a>
+            </li>
 
-    </body>
-</html>
+            <!-- Numbers -->
+            <li class="page-item active">
+                <a class="page-link">1</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link">2</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link">3</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link">4</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link">5</a>
+            </li>
+
+            <!-- Arrow right -->
+            <li class="page-item">
+                <a class="page-link" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- Pagination dark grey -->
+
+</div>
+<!-- Main listing -->
+
+{% endblock %}
